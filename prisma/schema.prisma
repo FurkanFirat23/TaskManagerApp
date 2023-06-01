@@ -11,17 +11,15 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  email     String
-  firstName String
-  lastName  String
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  email     String    @unique
   password  String
-
-  projects Project[]
-  tasks    Task[]
+  firstName String?
+  lastName  String?
+  projects  Project[]
+  tasks     Task[]
 }
 
 model Project {
@@ -29,14 +27,14 @@ model Project {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name    String
   ownerId String
   owner   User   @relation(fields: [ownerId], references: [id])
 
+  name        String
   description String?
   due         DateTime?
-  deleted     Boolean   @default(false)
   tasks       Task[]
+  deleted     Boolean   @default(false)
 
   @@unique([ownerId, name])
   @@index([ownerId, id])
@@ -53,14 +51,15 @@ model Task {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  status TASK_STATUS @default(NOT_STARTED)
-  name   String
-
   ownerId String
   owner   User   @relation(fields: [ownerId], references: [id])
 
   projectId String
   project   Project @relation(fields: [projectId], references: [id])
+
+  status      TASK_STATUS @default(NOT_STARTED)
+  name        String
+  description String
 
   due     DateTime?
   deleted Boolean   @default(false)
