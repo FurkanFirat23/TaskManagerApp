@@ -36,3 +36,11 @@ const fetcher = async ({ url, method, body, json = true }) => {
     });
   };
     
+  export const createNewProject = (name) => {
+    return fetcher({
+      url: "/api/project",
+      method: "POST",
+      body: { name },
+      json: true
+    });
+  };
