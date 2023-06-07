@@ -10,7 +10,7 @@ import { Suspense } from "react";
 
 export default async function Page() {
   return (
-    <div className="h-full overflow-y-auto pr-6 w-1/1">
+    <div className="h-full overflow-y-auto w-full pr-6 ">
       <div className=" h-full justify-center items-stretch min-h-[content]">
         <div className="flex-1 grow flex">
           <Suspense fallback={<GreetingsSkeleton/>}>
