@@ -1,7 +1,7 @@
 
 import Greetings from "@/components/Greetings";
 import GreetingsSkeleton from "@/components/GreetingsSkeleton";
-// import NewProject from "@/components/NewProject";
+import NewProject from "@/components/NewProject";
 import ProjectCard from "@/components/ProjectCard";
 import TaskCard from "@/components/TaskCard";
 import { delay } from "@/lib/async";
@@ -10,6 +10,7 @@ import { db } from "@/lib/db";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { Suspense } from "react";
+
 const getData = async () => {
   await delay(2000);
   const user = await getUserFromCookie(cookies());
@@ -28,7 +29,8 @@ const getData = async () => {
 
 
 export default async function Page() {
-  const { projects } = await getData();
+  
+
   return (
     <div className="h-full overflow-y-auto w-full pr-6 ">
       <div className=" h-full justify-center items-stretch min-h-[content]">
@@ -47,7 +49,7 @@ export default async function Page() {
         </Link>
       </div>
     ))}
-          <div className="w-1/3 p-3"></div>
+          <div className="w-1/3 p-3"><NewProject/></div>
         </div>
         <div className="mt-6 flex-2 grow w-full flex">
           <div className="w-full"><TaskCard/></div>
