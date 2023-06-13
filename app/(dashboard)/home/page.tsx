@@ -29,7 +29,7 @@ const getData = async () => {
 
 
 export default async function Page() {
-  
+  const { projects } = await getData();
 
   return (
     <div className="h-full overflow-y-auto w-full pr-6 ">
