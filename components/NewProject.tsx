@@ -15,11 +15,10 @@ const NewProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
     await createNewProject(name);
     closeModal();
   };
-
-  Modal.setAppElement("#modal"); // setAppElement çağrısını bileşenin üstünde yapıyoruz
 
   return (
     <div className="px-6 py-8 hover:scale-105 transition-all ease-in-out duration-200 flex justify-center items-center">
@@ -30,7 +29,7 @@ const NewProject = () => {
         onRequestClose={closeModal}
         overlayClassName="bg-[rgba(0,0,0,.4)] flex justify-center items-center absolute top-0 left-0 h-screen w-screen"
         className="w-3/4 bg-white rounded-xl p-8"
-        appElement="#modal" // appElement prop'unu kullanarak modalın açılacağı öğeyi belirtiyoruz
+        appElement={document.getElementById("modal-root")} // modal-root ID'sine sahip öğeyi belirtiyoruz
       >
         <h1 className="text-3xl mb-6">New Project</h1>
         <form className="flex items-center" onSubmit={handleSubmit}>
@@ -42,6 +41,9 @@ const NewProject = () => {
           <Button type="submit">Create</Button>
         </form>
       </Modal>
+
+      {/* modal-root ID'sine sahip div */}
+      <div id="modal-root" />
     </div>
   );
 };
