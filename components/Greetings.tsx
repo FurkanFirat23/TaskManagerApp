@@ -35,10 +35,10 @@ const Greetings = async (): Promise<JSX.Element> => {
       <Card className="w-full py-4 relative">
         <div className="mb-4">
           <h1 className="text-3xl text-gray-700 font-bold mb-4">
-            Kullanıcı bulunamadı!
+          User not found!
           </h1>
           <h4 className="text-xl text-gray-400">
-            Lütfen giriş yapınız veya hesap oluşturunuz.
+          Please login or create an account.
           </h4>
         </div>
       </Card>

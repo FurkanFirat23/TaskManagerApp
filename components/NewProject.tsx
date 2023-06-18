@@ -41,7 +41,7 @@ const NewProject = () => {
           <Button type="submit">Create</Button>
         </form>
       </Modal>
-
+      
       {/* modal-root ID'sine sahip div */}
       <div id="modal-root" />
     </div>
